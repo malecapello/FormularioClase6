@@ -18,7 +18,7 @@ const Formulario = () => {
     const [emailValido, setEmailValido] = useState (false)
     const [telefonoValido,setTelefonoValido]=useState (false)
     
-    const [mostrarValores,setMostrarValores] = useState(false);
+    const [mostrarValores,setMostrarValores] = useState(false)
     const [errors, setErrors] = useState(false)
       
     function actualizarNombre(e) {
@@ -45,12 +45,15 @@ const Formulario = () => {
 
     function actualizarContrasenia(e) {
         setContrasenia(e.target.value)
+        setContrasenia(e.target.value.length > 8)
     }
 
 
     function actualizarConfirmarc(e) {
         setConfirmarc(e.target.value)
+        setConfirmarc(e.target.value.length > 8)
     }
+
 
     const enviarDatos = (event) => {
         event.preventDefault();
@@ -80,16 +83,17 @@ const Formulario = () => {
                 </div>
                 <div className="grupo">
                     <input type="text" name="apellido" onChange={actualizarApellido} placeholder="" className="barra" value={apellido} />
-                    
+                    { !apellidoValido && 'Los datos son incorrectos' }
                     <label htmlFor="apellido">Apellido </label>
                 </div>
                 <div className="grupo">
                     <input type="email" name="email" onChange={actualizarEmail} placeholder="" className="barra" value={email} />
-                    
+                    { !emailValido && 'Los datos son incorrectos' }
                     <label htmlFor="email">Email </label>
                 </div>
                 <div className="grupo">
                     <input type="number" name="telefono" onChange={actualizarTelefono} placeholder="" className="barra" value={telefono} />
+                    { !telefonoValido && 'Los datos son incorrectos' }
                     <label htmlFor="telefono">Telefono </label>
                 </div>
                 <div className="grupo">
